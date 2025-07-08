@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= grade %> <%= subject %> – <%= topic.charAt(0).toUpperCase() + topic.slice(1) %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-4">
+  <div class="max-w-xl w-full bg-white rounded-lg shadow-lg p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">
+      <%= grade.replace('-', ' ') %> <%= subject.charAt(0).toUpperCase() + subject.slice(1) %> – <%= topic.charAt(0).toUpperCase() + topic.slice(1) %>
+    </h1>
+    <% if (['.jpg', '.jpeg', '.png', '.gif'].includes(ext)) { %>
+      <img src="<%= filePath %>" alt="<%= topic %>" class="w-full h-auto rounded border" />
+    <% } else if (ext === '.pdf') { %>
+      <iframe src="<%= filePath %>" class="w-full h-[60vh] border rounded" frameborder="0"></iframe>
+      <p class="mt-2 text-center text-sm text-gray-500">If the PDF does not display, <a href="<%= filePath %>" target="_blank" class="text-blue-600 underline">click here to download</a>.</p>
+    <% } else { %>
+      <div class="text-red-600 text-center">Unsupported file type.</div>
+    <% } %>
+  </div>
+</body>
+</html> 
